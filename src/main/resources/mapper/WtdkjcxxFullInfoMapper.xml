@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdjictec.xdfin.regulatory.report.mapper.WtdkjcxxFullInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sdjictec.xdfin.regulatory.report.entity.WtdkjcxxFullInfo">
+        <result column="dkhtbm" property="dkhtbm" />
+        <result column="dkjjbh" property="dkjjbh" />
+        <result column="jkrkhh" property="jkrkhh" />
+        <result column="wtrkhh" property="wtrkhh" />
+        <result column="nbjgh" property="nbjgh" />
+        <result column="dkffrq" property="dkffrq" />
+        <result column="ysdqrq" property="ysdqrq" />
+        <result column="sjzzrq" property="sjzzrq" />
+        <result column="dkqxlx" property="dkqxlx" />
+        <result column="lllx" property="lllx" />
+        <result column="djjzlx" property="djjzlx" />
+        <result column="jzll" property="jzll" />
+        <result column="sjll" property="sjll" />
+        <result column="llfdpl" property="llfdpl" />
+        <result column="dksjtx" property="dksjtx" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        dkhtbm, dkjjbh, jkrkhh, wtrkhh, nbjgh, dkffrq, ysdqrq, sjzzrq, dkqxlx, lllx, djjzlx, jzll, sjll, llfdpl, dksjtx
+    </sql>
+
+</mapper>

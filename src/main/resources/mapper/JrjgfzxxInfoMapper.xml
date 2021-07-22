@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdjictec.xdfin.regulatory.report.mapper.JrjgfzxxInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sdjictec.xdfin.regulatory.report.entity.JrjgfzxxInfo">
+        <result column="sjrq" property="sjrq" />
+        <result column="jrjgmc" property="jrjgmc" />
+        <result column="nbjgh" property="nbjgh" />
+        <result column="tyshxydm" property="tyshxydm" />
+        <result column="zssjjgh" property="zssjjgh" />
+        <result column="zssjjgmc" property="zssjjgmc" />
+        <result column="dqdm" property="dqdm" />
+        <result column="jgjb" property="jgjb" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        sjrq, jrjgmc, nbjgh, tyshxydm, zssjjgh, zssjjgmc, dqdm, jgjb
+    </sql>
+    <sql id="concatStr">
+        select concat(IFNULL(sjrq,''),'|@|',IFNULL(nbjgh,''),'|@|',IFNULL(jrjgmc,''),'|@|',IFNULL(jrjgbm,''),'|@|',IFNULL(tyshxydm,''),'|@|',IFNULL(zssjjgh,''),'|@|',IFNULL(zssjjgmc,''),'|@|',IFNULL(dqdm,''),'|@|',IFNULL(jgjb,'')) from jrjgfzxx_info
+    </sql>
+    <select id="getContactStr" resultType="java.lang.String">
+        <include refid="concatStr"/>
+        where sjrq=#{sjrq}
+    </select>
+</mapper>

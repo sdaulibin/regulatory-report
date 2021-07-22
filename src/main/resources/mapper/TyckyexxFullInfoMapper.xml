@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdjictec.xdfin.regulatory.report.mapper.TyckyexxFullInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sdjictec.xdfin.regulatory.report.entity.TyckyexxFullInfo">
+        <result column="ckzhbm" property="ckzhbm" />
+        <result column="nbjgh" property="nbjgh" />
+        <result column="khh" property="khh" />
+        <result column="bz" property="bz" />
+        <result column="ye" property="ye" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ckzhbm, nbjgh, khh, bz, ye
+    </sql>
+
+</mapper>

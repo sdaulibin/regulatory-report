@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdjictec.xdfin.regulatory.report.mapper.DgkhxxInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sdjictec.xdfin.regulatory.report.entity.DgkhxxInfo">
+        <result column="sjrq" property="sjrq"/>
+        <result column="khh" property="khh"/>
+        <result column="nbjgh" property="nbjgh"/>
+        <result column="gmjjbmfl" property="gmjjbmfl"/>
+        <result column="jrjglxdm" property="jrjglxdm"/>
+        <result column="qygm" property="qygm"/>
+        <result column="kglx" property="kglx"/>
+        <result column="jnjwbz" property="jnjwbz"/>
+        <result column="jyszdxzqhdm" property="jyszdxzqhdm"/>
+        <result column="zcdz" property="zcdz"/>
+        <result column="sxed" property="sxed"/>
+        <result column="yyed" property="yyed"/>
+        <result column="sshy" property="sshy"/>
+        <result column="nccsbz" property="nccsbz"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        sjrq, khh, nbjgh, gmjjbmfl, jrjglxdm, qygm, kglx, jnjwbz, jyszdxzqhdm, zcdz, sxed, yyed, sshy, nccsbz
+    </sql>
+
+    <sql id="concatStr">
+        select concat(IFNULL(sjrq,''),'|@|',IFNULL(khh,''),'|@|',IFNULL(nbjgh,''),'|@|',IFNULL(gmjjbmfl,''),'|@|',IFNULL(jrjglxdm,''),'|@|',IFNULL(qygm,''),'|@|',IFNULL(kglx,''),'|@|',IFNULL(jnjwbz,''),'|@|',IFNULL(jyszdxzqhdm,''),'|@|',IFNULL(zcdz,''),'|@|',IFNULL(sxed,''),'|@|',IFNULL(yyed,''),'|@|',IFNULL(sshy,''),'|@|',IFNULL(nccsbz,'')) as contact_str from dgkhxx_info
+    </sql>
+
+    <select id="getDgkhxxInfoList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dgkhxx_info where sjrq=#{sjrq}
+    </select>
+
+    <select id="getContactStr" resultType="java.lang.String">
+        <include refid="concatStr"/>
+        where sjrq=#{sjrq}
+    </select>
+</mapper>
