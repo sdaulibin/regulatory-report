@@ -3,6 +3,7 @@ package com.sdjictec.xdfin.regulatory.report;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
@@ -217,6 +218,9 @@ public class MainTest {
             log.error("读取失败:{}", e.getMessage());
         }
         for (FtydwdkfkxxInfo ftydwdkfkxxInfo : ftydwdkfkxxInfoList) {
+            if(StrUtil.isEmpty(ftydwdkfkxxInfo.getJylsh())) {
+                ftydwdkfkxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            }
             ftydwdkfkxxInfo.setSjrq(sjrq);
             ftydwdkfkxxInfoMapper.insert(ftydwdkfkxxInfo);
         }
@@ -270,6 +274,9 @@ public class MainTest {
         }
         for (FtydwckfsxxInfo ftydwckfsxxInfo : ftydwckfsxxInfoList) {
             ftydwckfsxxInfo.setSjrq(sjrq);
+            if(StrUtil.isEmpty(ftydwckfsxxInfo.getJylsh())) {
+                ftydwckfsxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            }
             ftydwckfsxxInfoMapper.insert(ftydwckfsxxInfo);
         }
     }
@@ -306,6 +313,9 @@ public class MainTest {
             log.error("读取失败:{}", e.getMessage());
         }
         for (PjtxztxfsxxInfo pjtxztxfsxxInfo : pjtxztxfsxxInfoList) {
+            if(StrUtil.isEmpty(pjtxztxfsxxInfo.getJylsh())) {
+                pjtxztxfsxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            }
             pjtxztxfsxxInfo.setSjrq(sjrq);
             pjtxztxfsxxInfoMapper.insert(pjtxztxfsxxInfo);
         }
@@ -360,6 +370,9 @@ public class MainTest {
         }
         for (WtdkfkxxInfo wtdkfkxxInfo : wtdkfkxxInfoList) {
             wtdkfkxxInfo.setSjrq(sjrq);
+            if(StrUtil.isEmpty(wtdkfkxxInfo.getJylsh())) {
+                wtdkfkxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            }
             wtdkfkxxInfoMapper.insert(wtdkfkxxInfo);
         }
     }
@@ -429,6 +442,9 @@ public class MainTest {
         }
         for (TyckfsxxInfo tyckfsxxInfo : tyckfsxxInfoList) {
             tyckfsxxInfo.setSjrq(sjrq);
+            if(StrUtil.isEmpty(tyckfsxxInfo.getJylsh())) {
+                tyckfsxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            }
             tyckfsxxInfoMapper.insert(tyckfsxxInfo);
         }
     }
