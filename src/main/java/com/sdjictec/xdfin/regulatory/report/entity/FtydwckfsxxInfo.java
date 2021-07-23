@@ -1,5 +1,8 @@
 package com.sdjictec.xdfin.regulatory.report.entity;
 
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.sdjictec.xdfin.regulatory.report.util.CustomStringStringConverter;
+import com.sdjictec.xdfin.regulatory.report.util.ExcelDateUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -90,5 +93,11 @@ public class FtydwckfsxxInfo implements Serializable {
      */
     private String dxebz;
 
+    public String getJyrq() {
+        return ExcelDateUtil.getDateStr(jyrq);
+    }
 
+    /*public void setJyrq(String jyrq) {
+        this.jyrq = ExcelDateUtil.getDateStr(jyrq);
+    }*/
 }

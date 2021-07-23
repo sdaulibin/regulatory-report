@@ -1,5 +1,6 @@
 package com.sdjictec.xdfin.regulatory.report.entity;
 
+import com.sdjictec.xdfin.regulatory.report.util.ExcelDateUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -90,5 +91,11 @@ public class TyckjcxxInfo implements Serializable {
      */
     private String llfdpl;
 
+    public String getQsrq() {
+        return ExcelDateUtil.getDateStr(qsrq);
+    }
 
+    public String getDqrq() {
+        return ExcelDateUtil.getDateStr(dqrq);
+    }
 }

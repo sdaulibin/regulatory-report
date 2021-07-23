@@ -1,5 +1,6 @@
 package com.sdjictec.xdfin.regulatory.report.entity;
 
+import com.sdjictec.xdfin.regulatory.report.util.ExcelDateUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -75,5 +76,7 @@ public class WtdkfkxxInfo implements Serializable {
      */
     private BigDecimal sjll;
 
-
+    public String getJyrq() {
+        return ExcelDateUtil.getDateStr(jyrq);
+    }
 }

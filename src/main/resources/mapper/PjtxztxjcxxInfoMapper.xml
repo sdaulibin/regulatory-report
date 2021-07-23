@@ -14,8 +14,8 @@
         <result column="dqrq" property="dqrq" />
         <result column="pjrzqxlx" property="pjrzqxlx" />
         <result column="txll" property="txll" />
-        <result column="bz" property="bz" />
-        <result column="ywlx" property="ywlx" />
+<!--        <result column="bz" property="bz" />-->
+<!--        <result column="ywlx" property="ywlx" />-->
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -23,7 +23,7 @@
         sjrq, nbjgh, khh, jrjglxdm, ywbm, pjrzywlx, qsrq, dqrq, pjrzqxlx, txll
     </sql>
     <sql id="concatStr">
-        select concat(IFNULL(sjrq,''),'|@|',IFNULL(nbjgh,''),'|@|',IFNULL(khh,''),'|@|',IFNULL(jrjglxdm,''),'|@|',IFNULL(ywbm,''),'|@|',IFNULL(pjrzywlx,''),'|@|',IFNULL(qsrq,''),'|@|',IFNULL(dqrq,''),'|@|',IFNULL(pjrzqxlx,''),'|@|',IFNULL(txll,''),'|@|',IFNULL(bz,''),'|@|',IFNULL(ywlx,'')) from pjtxztxjcxx_info
+        select concat(IFNULL(sjrq,''),'|@|',IFNULL(nbjgh,''),'|@|',IFNULL(khh,''),'|@|',IFNULL(jrjglxdm,''),'|@|',IFNULL(ywbm,''),'|@|',IFNULL(pjrzywlx,''),'|@|',IFNULL(qsrq,''),'|@|',IFNULL(dqrq,''),'|@|',IFNULL(pjrzqxlx,''),'|@|',IFNULL(txll,'')) from pjtxztxjcxx_info
     </sql>
     <select id="getContactStr" resultType="java.lang.String">
         <include refid="concatStr"/>

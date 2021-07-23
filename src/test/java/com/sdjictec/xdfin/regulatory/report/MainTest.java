@@ -96,8 +96,8 @@ public class MainTest {
 //        pjtx("2021-06-27");
 //        wtdk("2021-06-27");
 //        tyck("2021-06-27");
-        String bwsjrq = "20210628";
-        String sjrq = "2021-06-28";
+        String bwsjrq = "20210627";
+        String sjrq = "2021-06-27";
         List<String> listFileNames = FileUtil.listFileNames(BASE_PATH+bwsjrq+"/");
         for (String fileName:listFileNames) {
             String filePath = BASE_PATH+bwsjrq+"/"+fileName;
@@ -116,7 +116,7 @@ public class MainTest {
             if (fileName.contains("非同业单位存款基础信息表-"+bwsjrq)) {
                 ftyckjc(sjrq,filePath);
             }
-            if (fileName.contains("非同业单位存款发生额信息表-"+bwsjrq)) {
+            if (fileName.contains("非同业单位存款发生额信息表（不含活期存款、协定存款）-"+bwsjrq)) {
                 ftyckfs(sjrq,filePath);
             }
             if (fileName.contains("非同业单位存款余额信息表-"+bwsjrq)) {
@@ -131,7 +131,7 @@ public class MainTest {
             if (fileName.contains("票据贴现及转贴现余额信息表-"+bwsjrq)) {
                 pjtxye(sjrq,filePath);
             }
-            if (fileName.contains("同业存款发生额信息表-"+bwsjrq)) {
+            if (fileName.contains("同业存款发生额信息表（不含活期存款）-"+bwsjrq)) {
                 tyckfs(sjrq,filePath);
             }
             if (fileName.contains("同业存款基础信息表-"+bwsjrq)) {

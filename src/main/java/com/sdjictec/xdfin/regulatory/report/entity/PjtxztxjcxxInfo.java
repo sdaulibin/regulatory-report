@@ -1,5 +1,6 @@
 package com.sdjictec.xdfin.regulatory.report.entity;
 
+import com.sdjictec.xdfin.regulatory.report.util.ExcelDateUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -72,13 +73,19 @@ public class PjtxztxjcxxInfo implements Serializable {
 
     /**
      * 币种
-     */
+     *//*
     private String bz;
 
-    /**
+    *//**
      * 业务类型
-     */
-    private String ywlx;
+     *//*
+    private String ywlx;*/
 
+    public String getQsrq() {
+        return ExcelDateUtil.getDateStr(qsrq);
+    }
 
+    public String getDqrq() {
+        return ExcelDateUtil.getDateStr(dqrq);
+    }
 }

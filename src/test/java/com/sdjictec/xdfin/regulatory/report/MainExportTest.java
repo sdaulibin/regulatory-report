@@ -72,14 +72,15 @@ public class MainExportTest {
 
     @Test
     public void mainTest() {
-        String typeStr = "DGKHXX,JGFRXX,JGFZXX,DWDKJC,DWDKYE,DWDKFK,WTDKJC,WTDKYE,WTDKFK,DWCKJC,DWCKYE,DWCKFS,TYCKJC,TYCKYE,TYCKFS,YJDJC,TYJDYE,TYJDFS,MRFSJC,MRFSYE,MRFSFS,PJTXJC,PJTXYE,PJTXFS";
+        String typeStr = "DGKHXX,JGFRXX,JGFZXX,DWDKJC,DWDKYE,DWDKFK,WTDKJC,WTDKYE,WTDKFK,DWCKJC,DWCKYE,DWCKFS,TYCKJC,TYCKYE,TYCKFS,TYJDJC,TYJDYE,TYJDFS,MRFSJC,MRFSYE,MRFSFS,PJTXJC,PJTXYE,PJTXFS,GRKHXX,GRDKJC,GRDKYE,GRDKFK,TZYWYE,TZYWJY,TZYWZD,TZYWFQ,GRCKJC,GRCKYE,GRCKFS,FTPDJB";
         String[] split = typeStr.split(",");
         for (int i = 0; i < split.length; i++) {
-            getFile("2021-06-27","20210627",split[i]);
+            File txt = null;
+            getFile("2021-06-27","20210627",split[i],txt);
         }
     }
 
-    public void getFile(String sjrq,String bwsjrq,String type) {
+    public void getFile(String sjrq,String bwsjrq,String type,File txt) {
         List<String> list = new ArrayList<String>();
         if("DGKHXX".equals(type)) {
             list = dgkhxxInfoMapper.getContactStr(sjrq);
@@ -129,28 +130,48 @@ public class MainExportTest {
             list = pjtxztxyexxInfoMapper.getContactStr(sjrq);
         } else if("PJTXFS".equals(type)) {
             list = pjtxztxfsxxInfoMapper.getContactStr(sjrq);
+        } else if("GRKHXX".equals(type)) {
+        } else if("GRDKJC".equals(type)) {
+        } else if("GRDKYE".equals(type)) {
+        } else if("GRDKFK".equals(type)) {
+        } else if("TZYWYE".equals(type)) {
+        } else if("TZYWJY".equals(type)) {
+        } else if("TZYWZD".equals(type)) {
+        } else if("TZYWFQ".equals(type)) {
+        } else if("GRCKJC".equals(type)) {
+        } else if("GRCKYE".equals(type)) {
+        } else if("GRCKFS".equals(type)) {
+        } else if("FTPDJB".equals(type)) {
+
         }
-        for (String string:list) {
-            log.info(string);
+        if (!list.isEmpty()) {
+            txt = FileUtil.newFile(BASE_PATH + type + "_" + bwsjrq + "_1_1.txt");
+            for (String string:list) {
+                if(list.lastIndexOf(string) == list.size()-1) {
+                    FileUtil.appendString(string, txt, "UTF-8");
+                } else {
+                    FileUtil.appendString(string+"\n", txt, "UTF-8");
+                }
+            }
+        } else {
+            txt = FileUtil.touch(BASE_PATH + type + "_" + bwsjrq + "_1_1.txt");
         }
-        if(!list.isEmpty()) {
-            File txt = FileUtil.appendLines(list, FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.txt"), "UTF-8");
-            String encode = Base64.encode(ZipUtil.zip(txt));
-            String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "\n" +
-                    "<Package>\n" +
-                    "  <bankcode>C5007761000013</bankcode>\n" +
-                    "  <reporttaskdate>"+bwsjrq+"</reporttaskdate>\n" +
-                    "  <reporttypecode>"+type+"</reporttypecode>\n" +
-                    "  <totalseparate>1</totalseparate>\n" +
-                    "  <separateseq>1</separateseq>\n" +
-                    "  <reportflag>FTRT</reportflag>\n" +
-                    "  <rownum>1</rownum>\n" +
-                    "  <totalrownum>1</totalrownum>\n" +
-                    "  <filecontent>"+encode+"</filecontent>\n" +
-                    "</Package>" ;
-            File xmlFile = FileUtil.appendString(xmlStr,FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.xml"),"UTF-8");
-            ZipUtil.zip(xmlFile);
-        }
+        //File txt = FileUtil.writeLines(list, FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.txt"), "UTF-8");
+        String encode = Base64.encode(ZipUtil.zip(txt));
+        String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "\n" +
+                "<Package>\n" +
+                "  <bankcode>C5007761000013</bankcode>\n" +
+                "  <reporttaskdate>"+bwsjrq+"</reporttaskdate>\n" +
+                "  <reporttypecode>"+type+"</reporttypecode>\n" +
+                "  <totalseparate>1</totalseparate>\n" +
+                "  <separateseq>1</separateseq>\n" +
+                "  <reportflag>FTRT</reportflag>\n" +
+                "  <rownum>"+list.size()+"</rownum>\n" +
+                "  <totalrownum>"+list.size()+"</totalrownum>\n" +
+                "  <filecontent>"+encode+"</filecontent>\n" +
+                "</Package>" ;
+        File xmlFile = FileUtil.appendString(xmlStr,FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.xml"),"UTF-8");
+        ZipUtil.zip(xmlFile);
     }
 }
