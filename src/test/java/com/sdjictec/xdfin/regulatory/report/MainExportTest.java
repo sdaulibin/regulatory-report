@@ -68,14 +68,14 @@ public class MainExportTest {
     @Autowired
     private WtdkyexxInfoMapper wtdkyexxInfoMapper;
 
-    public static final String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/人行报文20210628/C5007761000013_";
+    public static final String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/人行报文20210627/C5007761000013_";
 
     @Test
     public void mainTest() {
         String typeStr = "DGKHXX,JGFRXX,JGFZXX,DWDKJC,DWDKYE,DWDKFK,WTDKJC,WTDKYE,WTDKFK,DWCKJC,DWCKYE,DWCKFS,TYCKJC,TYCKYE,TYCKFS,YJDJC,TYJDYE,TYJDFS,MRFSJC,MRFSYE,MRFSFS,PJTXJC,PJTXYE,PJTXFS";
         String[] split = typeStr.split(",");
         for (int i = 0; i < split.length; i++) {
-            getFile("2021-06-28","20210628",split[i]);
+            getFile("2021-06-27","20210627",split[i]);
         }
     }
 
@@ -133,22 +133,24 @@ public class MainExportTest {
         for (String string:list) {
             log.info(string);
         }
-        File txt = FileUtil.appendLines(list, FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.txt"), "UTF-8");
-        String encode = Base64.encode(ZipUtil.zip(txt));
-        String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "\n" +
-                "<Package>\n" +
-                "  <bankcode>C5007761000013</bankcode>\n" +
-                "  <reporttaskdate>"+sjrq+"</reporttaskdate>\n" +
-                "  <reporttypecode>"+type+"</reporttypecode>\n" +
-                "  <totalseparate>1</totalseparate>\n" +
-                "  <separateseq>1</separateseq>\n" +
-                "  <reportflag>FTRT</reportflag>\n" +
-                "  <rownum>1</rownum>\n" +
-                "  <totalrownum>1</totalrownum>\n" +
-                "  <filecontent>"+encode+"</filecontent>\n" +
-                "</Package>" ;
-        File xmlFile = FileUtil.appendString(xmlStr,FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.xml"),"UTF-8");
-        ZipUtil.zip(xmlFile);
+        if(!list.isEmpty()) {
+            File txt = FileUtil.appendLines(list, FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.txt"), "UTF-8");
+            String encode = Base64.encode(ZipUtil.zip(txt));
+            String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    "\n" +
+                    "<Package>\n" +
+                    "  <bankcode>C5007761000013</bankcode>\n" +
+                    "  <reporttaskdate>"+bwsjrq+"</reporttaskdate>\n" +
+                    "  <reporttypecode>"+type+"</reporttypecode>\n" +
+                    "  <totalseparate>1</totalseparate>\n" +
+                    "  <separateseq>1</separateseq>\n" +
+                    "  <reportflag>FTRT</reportflag>\n" +
+                    "  <rownum>1</rownum>\n" +
+                    "  <totalrownum>1</totalrownum>\n" +
+                    "  <filecontent>"+encode+"</filecontent>\n" +
+                    "</Package>" ;
+            File xmlFile = FileUtil.appendString(xmlStr,FileUtil.newFile(BASE_PATH+type+"_"+bwsjrq+"_1_1.xml"),"UTF-8");
+            ZipUtil.zip(xmlFile);
+        }
     }
 }

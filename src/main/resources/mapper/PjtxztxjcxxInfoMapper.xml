@@ -20,7 +20,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        sjrq, nbjgh, khh, jrjglxdm, ywbm, pjrzywlx, qsrq, dqrq, pjrzqxlx, txll, bz, ywlx
+        sjrq, nbjgh, khh, jrjglxdm, ywbm, pjrzywlx, qsrq, dqrq, pjrzqxlx, txll
     </sql>
     <sql id="concatStr">
         select concat(IFNULL(sjrq,''),'|@|',IFNULL(nbjgh,''),'|@|',IFNULL(khh,''),'|@|',IFNULL(jrjglxdm,''),'|@|',IFNULL(ywbm,''),'|@|',IFNULL(pjrzywlx,''),'|@|',IFNULL(qsrq,''),'|@|',IFNULL(dqrq,''),'|@|',IFNULL(pjrzqxlx,''),'|@|',IFNULL(txll,''),'|@|',IFNULL(bz,''),'|@|',IFNULL(ywlx,'')) from pjtxztxjcxx_info
