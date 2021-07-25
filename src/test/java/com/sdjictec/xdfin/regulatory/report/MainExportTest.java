@@ -81,7 +81,7 @@ public class MainExportTest {
     }
 
     public void getFile(String sjrq,String bwsjrq,String type,File txt) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = null;
         if("DGKHXX".equals(type)) {
             list = dgkhxxInfoMapper.getContactStr(sjrq);
         } else if("JGFRXX".equals(type)) {
@@ -131,18 +131,29 @@ public class MainExportTest {
         } else if("PJTXFS".equals(type)) {
             list = pjtxztxfsxxInfoMapper.getContactStr(sjrq);
         } else if("GRKHXX".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRDKJC".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRDKYE".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRDKFK".equals(type)) {
+            list = new ArrayList<>();
         } else if("TZYWYE".equals(type)) {
+            list = new ArrayList<>();
         } else if("TZYWJY".equals(type)) {
+            list = new ArrayList<>();
         } else if("TZYWZD".equals(type)) {
+            list = new ArrayList<>();
         } else if("TZYWFQ".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRCKJC".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRCKYE".equals(type)) {
+            list = new ArrayList<>();
         } else if("GRCKFS".equals(type)) {
+            list = new ArrayList<>();
         } else if("FTPDJB".equals(type)) {
-
+            list = new ArrayList<>();
         }
         if (!list.isEmpty()) {
             txt = FileUtil.newFile(BASE_PATH + type + "_" + bwsjrq + "_1_1.txt");

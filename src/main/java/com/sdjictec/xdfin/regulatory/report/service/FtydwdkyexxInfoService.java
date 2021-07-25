@@ -1,6 +1,7 @@
 package com.sdjictec.xdfin.regulatory.report.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkjcxxFullInfo;
 import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkyexxInfo;
 
 /**
@@ -12,5 +13,6 @@ import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkyexxInfo;
  * @since 2021-07-22
  */
 public interface FtydwdkyexxInfoService extends IService<FtydwdkyexxInfo> {
-
+    Boolean checkKhh(String khh, String jjbh);
+    void ftydwdkjcxxInfoImport(String sjrq,String filePath);
 }

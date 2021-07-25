@@ -12,5 +12,7 @@ import com.sdjictec.xdfin.regulatory.report.entity.WtdkjcxxInfo;
  * @since 2021-07-22
  */
 public interface WtdkjcxxInfoService extends IService<WtdkjcxxInfo> {
-
+    Boolean checkJkrkhh(String jkrkhh);
+    Boolean checkWtrkhh(String wtkhh);
+    void wtdkjcxxInfoImport(String sjrq,String filePath);
 }

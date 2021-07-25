@@ -39,4 +39,9 @@
         <include refid="concatStr"/>
         where sjrq=#{sjrq}
     </select>
+
+    <select id="getKhh" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from dgkhxx_info where khh=#{khh}
+    </select>
 </mapper>

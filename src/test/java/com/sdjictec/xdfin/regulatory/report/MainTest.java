@@ -96,8 +96,8 @@ public class MainTest {
 //        pjtx("2021-06-27");
 //        wtdk("2021-06-27");
 //        tyck("2021-06-27");
-        String bwsjrq = "20210627";
-        String sjrq = "2021-06-27";
+        String bwsjrq = "20210628";
+        String sjrq = "2021-06-28";
         List<String> listFileNames = FileUtil.listFileNames(BASE_PATH+bwsjrq+"/");
         for (String fileName:listFileNames) {
             String filePath = BASE_PATH+bwsjrq+"/"+fileName;

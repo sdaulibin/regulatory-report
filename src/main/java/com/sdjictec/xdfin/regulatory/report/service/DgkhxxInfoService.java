@@ -1,6 +1,7 @@
 package com.sdjictec.xdfin.regulatory.report.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sdjictec.xdfin.regulatory.report.entity.DgkhxxFullInfo;
 import com.sdjictec.xdfin.regulatory.report.entity.DgkhxxInfo;
 import com.sdjictec.xdfin.regulatory.report.util.ExcelCheckManager;
 
@@ -13,4 +14,6 @@ import com.sdjictec.xdfin.regulatory.report.util.ExcelCheckManager;
  * @since 2021-07-22
  */
 public interface DgkhxxInfoService extends ExcelCheckManager<DgkhxxInfo> {
+    DgkhxxFullInfo getByHhh(String khh);
+    void dgkhxxImport(String sjrq,String filePath);
 }

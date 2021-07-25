@@ -5,6 +5,7 @@ import com.sdjictec.xdfin.regulatory.report.entity.JrjgfzxxInfo;
 import com.sdjictec.xdfin.regulatory.report.mapper.JrjgfzxxInfoMapper;
 import com.sdjictec.xdfin.regulatory.report.service.JrjgfzxxInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-07-22
  */
 @Service
+@Transactional
 public class JrjgfzxxInfoServiceImpl extends ServiceImpl<JrjgfzxxInfoMapper, JrjgfzxxInfo> implements JrjgfzxxInfoService {
 
 }

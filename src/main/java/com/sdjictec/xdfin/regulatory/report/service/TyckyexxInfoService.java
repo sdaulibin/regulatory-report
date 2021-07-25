@@ -12,5 +12,6 @@ import com.sdjictec.xdfin.regulatory.report.entity.TyckyexxInfo;
  * @since 2021-07-22
  */
 public interface TyckyexxInfoService extends IService<TyckyexxInfo> {
-
+    Boolean checkKhh(String khh, String ckzhbm);
+    void tyckyexxInfoImport(String sjrq,String filePath);
 }

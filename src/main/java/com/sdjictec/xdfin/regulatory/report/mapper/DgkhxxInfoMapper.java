@@ -20,4 +20,6 @@ public interface DgkhxxInfoMapper extends BaseMapper<DgkhxxInfo> {
     List<DgkhxxInfo> getDgkhxxInfoList(String sjrq);
 
     List<String> getContactStr(String sjrq);
+
+    DgkhxxInfo getKhh(String khh);
 }

@@ -5,6 +5,7 @@ import com.sdjictec.xdfin.regulatory.report.entity.WtdkjcxxFullInfo;
 import com.sdjictec.xdfin.regulatory.report.mapper.WtdkjcxxFullInfoMapper;
 import com.sdjictec.xdfin.regulatory.report.service.WtdkjcxxFullInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-07-23
  */
 @Service
+@Transactional
 public class WtdkjcxxFullInfoServiceImpl extends ServiceImpl<WtdkjcxxFullInfoMapper, WtdkjcxxFullInfo> implements WtdkjcxxFullInfoService {
 
 }

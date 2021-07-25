@@ -5,6 +5,7 @@ import com.sdjictec.xdfin.regulatory.report.entity.TyckyexxFullInfo;
 import com.sdjictec.xdfin.regulatory.report.mapper.TyckyexxFullInfoMapper;
 import com.sdjictec.xdfin.regulatory.report.service.TyckyexxFullInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-07-23
  */
 @Service
+@Transactional
 public class TyckyexxFullInfoServiceImpl extends ServiceImpl<TyckyexxFullInfoMapper, TyckyexxFullInfo> implements TyckyexxFullInfoService {
 
 }

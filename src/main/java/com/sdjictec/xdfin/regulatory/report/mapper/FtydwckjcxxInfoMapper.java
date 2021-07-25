@@ -17,4 +17,5 @@ import java.util.List;
 @Mapper
 public interface FtydwckjcxxInfoMapper extends BaseMapper<FtydwckjcxxInfo> {
     List<String> getContactStr(String sjrq);
+    FtydwckjcxxInfo getKhh(String khh);
 }
