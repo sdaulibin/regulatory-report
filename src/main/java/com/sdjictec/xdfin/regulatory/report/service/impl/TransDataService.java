@@ -3,6 +3,7 @@ package com.sdjictec.xdfin.regulatory.report.service.impl;
 import cn.hutool.core.io.FileUtil;
 import com.sdjictec.xdfin.regulatory.report.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,95 +58,97 @@ public class TransDataService {
     private WtdkjcxxInfoService wtdkjcxxInfoService;
     @Autowired
     private WtdkyexxInfoService wtdkyexxInfoService;
-    public static final String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/利率报备";
+    @Value("${data.trans.path}")
+//    public String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/利率报备";
+    public String nasePath= "/Users/binginx/Downloads/西电财务公司/利率报备";
     public void tranData(String bwsjrq,String sjrq) {
 //        String bwsjrq = "20210628";
 //        String sjrq = "2021-06-28";
-        List<String> listFileNames = FileUtil.listFileNames(BASE_PATH+bwsjrq+"/");
+        List<String> listFileNames = FileUtil.listFileNames(nasePath+bwsjrq+"/");
         String filePath = null;
         int index = -1;
         if ((index = listFileNames.indexOf("对公客户信息表-"+bwsjrq+"-企业.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             dgkh(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("对公客户信息表-"+bwsjrq+"-融资.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             dgkh(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("对公客户信息表-"+bwsjrq+"-同业.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             dgkh(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款基础信息表-"+bwsjrq+"-融资.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款基础信息表-"+bwsjrq+"-自营.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款余额信息表-"+bwsjrq+"-融资.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款余额信息表-"+bwsjrq+"-自营.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款放款信息表-"+bwsjrq+"-融资.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkfk(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位贷款放款信息表-"+bwsjrq+"-自营.xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftydkfk(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位存款基础信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftyckjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位存款余额信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftyckye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("非同业单位存款发生额信息表（不含活期存款、协定存款）-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             ftyckfs(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("票据贴现及转贴现基础信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             pjtxjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("票据贴现及转贴现余额信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             pjtxye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("票据贴现及转贴现发生额信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             pjtxfs(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("同业存款基础信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             tyckjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("同业存款余额信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             tyckye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("同业存款发生额信息表（不含活期存款）-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             tyckfs(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("委托贷款基础信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             wtdkjc(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("委托贷款余额信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             wtdkye(sjrq,filePath);
         }
         if ((index = listFileNames.indexOf("委托贷款放款信息表-"+bwsjrq+".xlsx")) >=0) {
-            filePath = BASE_PATH+bwsjrq+"/"+listFileNames.get(index);
+            filePath = nasePath+bwsjrq+"/"+listFileNames.get(index);
             wtdkfk(sjrq,filePath);
         }
     }

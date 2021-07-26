@@ -5,6 +5,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
 import com.sdjictec.xdfin.regulatory.report.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -61,11 +62,13 @@ public class GenerateDataService {
     private WtdkjcxxInfoMapper wtdkjcxxInfoMapper;
     @Autowired
     private WtdkyexxInfoMapper wtdkyexxInfoMapper;
+    @Value("${data.gen.path}")
+    public String basePath;
 
 //    public static final String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/人行报文20210627/C5007761000013_";
 
     public void generateData(String bwsjrq,String sjrq) {
-        String typeStr = "DGKHXX,JGFRXX,JGFZXX,DWDKJC,DWDKYE,DWDKFK,WTDKJC,WTDKYE,WTDKFK,DWCKJC,DWCKYE,DWCKFS,TYCKJC,TYCKYE,TYCKFS,TYJDJC,TYJDYE,TYJDFS,MRFSJC,MRFSYE,MRFSFS,PJTXJC,PJTXYE,PJTXFS,GRKHXX,GRDKJC,GRDKYE,GRDKFK,TZYWYE,TZYWJY,TZYWZD,TZYWFQ,GRCKJC,GRCKYE,GRCKFS,FTPDJB";
+        String typeStr = "DGKHXX,JGFRXX,JGFZXX,DWDKJC,DWDKYE,DWDKFK,WTDKJC,WTDKYE,WTDKFK,DWCKJC,DWCKYE,DWCKFS,TYCKJC,TYCKYE,TYCKFS,TYJDJC,TYJDYE,TYJDFS,MRFSJC,MRFSYE,MRFSFS,PJTXJC,PJTXYE,PJTXFS,GRKHXX,GRDKJC,GRDKYE,GRDKFK,TZYWYE,TZYWJY,GRCKJC,GRCKYE,GRCKFS,FTPDJB";
         String[] split = typeStr.split(",");
 //        String bwsjrq = "20210628";
 //        String sjrq = "2021-06-28";
@@ -76,7 +79,7 @@ public class GenerateDataService {
     }
 
     public void getFile(String sjrq,String bwsjrq,String type,File txt) {
-        String BASE_PATH= "/Users/binginx/Downloads/西电财务公司/人行报文"+bwsjrq+"/C5007761000013_";
+        String BASE_PATH= basePath+bwsjrq+"/C5007761000013_";
         List<String> list = null;
         if("DGKHXX".equals(type)) {
             list = dgkhxxInfoMapper.getContactStr(sjrq);
@@ -138,11 +141,11 @@ public class GenerateDataService {
             list = new ArrayList<>();
         } else if("TZYWJY".equals(type)) {
             list = new ArrayList<>();
-        } else if("TZYWZD".equals(type)) {
+        } /*else if("TZYWZD".equals(type)) {
             list = new ArrayList<>();
         } else if("TZYWFQ".equals(type)) {
             list = new ArrayList<>();
-        } else if("GRCKJC".equals(type)) {
+        }*/ else if("GRCKJC".equals(type)) {
             list = new ArrayList<>();
         } else if("GRCKYE".equals(type)) {
             list = new ArrayList<>();
