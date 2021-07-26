@@ -48,7 +48,7 @@ public class FtydwckfsxxInfoServiceImpl extends ServiceImpl<FtydwckfsxxInfoMappe
         queryWrapper1.eq("khh", khh);
         queryWrapper1.eq("ckzhbm",ckzhbm);
         queryWrapper1.eq("ckxh",ckxh);
-        queryWrapper1.eq("sjrq",sjrq);
+//        queryWrapper1.eq("sjrq",sjrq);
         List<FtydwckjcxxInfo> list1 = ftydwckjcxxInfoMapper.selectList(queryWrapper1);
         boolean result1 = list1.isEmpty() ? false : list1.size()>0;
 
@@ -78,6 +78,8 @@ public class FtydwckfsxxInfoServiceImpl extends ServiceImpl<FtydwckfsxxInfoMappe
             ftydwckfsxxInfo.setSjrq(sjrq);
             if(StrUtil.isEmpty(ftydwckfsxxInfo.getJylsh())) {
                 ftydwckfsxxInfo.setJylsh(IdUtil.getSnowflake().nextIdStr());
+            } else {
+                ftydwckfsxxInfo.setJylsh(ftydwckfsxxInfo.getJylsh().trim());
             }
             ftydwckfsxxInfoMapper.insert(ftydwckfsxxInfo);
         }
@@ -92,5 +94,12 @@ public class FtydwckfsxxInfoServiceImpl extends ServiceImpl<FtydwckfsxxInfoMappe
         // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
         excelReader.finish();
         return ftydwckfsxxInfoListener.getFtydwckfsxxInfoList();
+    }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<FtydwckfsxxInfo> queryWrapper = new QueryWrapper<FtydwckfsxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return ftydwckfsxxInfoMapper.delete(queryWrapper);
     }
 }

@@ -9,6 +9,7 @@ import com.alibaba.excel.read.metadata.ReadSheet;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sdjictec.xdfin.regulatory.report.entity.DgkhxxFullInfo;
+import com.sdjictec.xdfin.regulatory.report.entity.PjtxztxyexxInfo;
 import com.sdjictec.xdfin.regulatory.report.entity.WtdkjcxxFullInfo;
 import com.sdjictec.xdfin.regulatory.report.entity.WtdkjcxxInfo;
 import com.sdjictec.xdfin.regulatory.report.listener.WtdkjcxxInfoListener;
@@ -101,5 +102,12 @@ public class WtdkjcxxInfoServiceImpl extends ServiceImpl<WtdkjcxxInfoMapper, Wtd
         // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
         excelReader.finish();
         return wtdkjcxxInfoListener.getWtdkjcxxInfoList();
+    }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<WtdkjcxxInfo> queryWrapper = new QueryWrapper<WtdkjcxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return wtdkjcxxInfoMapper.delete(queryWrapper);
     }
 }

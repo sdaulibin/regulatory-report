@@ -15,4 +15,5 @@ public interface WtdkjcxxInfoService extends IService<WtdkjcxxInfo> {
     Boolean checkJkrkhh(String jkrkhh);
     Boolean checkWtrkhh(String wtkhh);
     void wtdkjcxxInfoImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }

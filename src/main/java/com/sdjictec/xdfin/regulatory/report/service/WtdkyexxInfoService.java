@@ -15,4 +15,5 @@ public interface WtdkyexxInfoService extends IService<WtdkyexxInfo> {
     Boolean checkJkrkhh(String jkrkhh, String dkjjbh);
     Boolean checkWtrkhh(String wtrkhh, String dkjjbh);
     void wtdkyexxInfoImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }

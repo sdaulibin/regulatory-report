@@ -16,4 +16,5 @@ import com.sdjictec.xdfin.regulatory.report.util.ExcelCheckManager;
 public interface DgkhxxInfoService extends ExcelCheckManager<DgkhxxInfo> {
     DgkhxxFullInfo getByHhh(String khh);
     void dgkhxxImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }

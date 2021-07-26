@@ -101,6 +101,13 @@ public class DgkhxxInfoServiceImpl implements DgkhxxInfoService {
         }
     }
 
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<DgkhxxInfo> queryWrapper = new QueryWrapper<DgkhxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return dgkhxxInfoMapper.delete(queryWrapper);
+    }
+
     //对公客户
     public static List<DgkhxxInfo> saxReadDgkhxxInfo(String pathFile) throws IOException {
         DgkhxxInfoListener dgkhxxListener = new DgkhxxInfoListener();

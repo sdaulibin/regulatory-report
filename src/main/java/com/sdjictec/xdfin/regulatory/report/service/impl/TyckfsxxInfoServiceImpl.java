@@ -90,4 +90,11 @@ public class TyckfsxxInfoServiceImpl extends ServiceImpl<TyckfsxxInfoMapper, Tyc
         excelReader.finish();
         return tyckfsxxInfoListener.getTyckfsxxInfoList();
     }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<TyckfsxxInfo> queryWrapper = new QueryWrapper<TyckfsxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return tyckfsxxInfoMapper.delete(queryWrapper);
+    }
 }

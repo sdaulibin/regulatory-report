@@ -5,8 +5,10 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sdjictec.xdfin.regulatory.report.entity.DgkhxxFullInfo;
+import com.sdjictec.xdfin.regulatory.report.entity.FtydwckjcxxInfo;
 import com.sdjictec.xdfin.regulatory.report.entity.PjtxztxjcxxInfo;
 import com.sdjictec.xdfin.regulatory.report.listener.PjtxztxjcxxInfoListener;
 import com.sdjictec.xdfin.regulatory.report.mapper.PjtxztxjcxxInfoMapper;
@@ -75,5 +77,12 @@ public class PjtxztxjcxxInfoServiceImpl extends ServiceImpl<PjtxztxjcxxInfoMappe
         // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
         excelReader.finish();
         return pjtxztxjcxxInfoListener.getPjtxztxjcxxInfoList();
+    }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<PjtxztxjcxxInfo> queryWrapper = new QueryWrapper<PjtxztxjcxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return pjtxztxjcxxInfoMapper.delete(queryWrapper);
     }
 }

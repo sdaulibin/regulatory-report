@@ -14,4 +14,5 @@ import com.sdjictec.xdfin.regulatory.report.entity.TyckjcxxInfo;
 public interface TyckjcxxInfoService extends IService<TyckjcxxInfo> {
     public Boolean checkKhh(String khh);
     void tyckjcxxInfoImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }

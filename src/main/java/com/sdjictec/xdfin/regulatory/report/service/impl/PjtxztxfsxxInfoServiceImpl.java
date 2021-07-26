@@ -90,4 +90,11 @@ public class PjtxztxfsxxInfoServiceImpl extends ServiceImpl<PjtxztxfsxxInfoMappe
         excelReader.finish();
         return pjtxztxfsxxInfoListener.getPjtxztxfsxxInfoList();
     }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<PjtxztxfsxxInfo> queryWrapper = new QueryWrapper<PjtxztxfsxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return pjtxztxfsxxInfoMapper.delete(queryWrapper);
+    }
 }

@@ -104,4 +104,11 @@ public class WtdkyexxInfoServiceImpl extends ServiceImpl<WtdkyexxInfoMapper, Wtd
         excelReader.finish();
         return wtdkyexxInfoListener.getWtdkyexxInfoList();
     }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<WtdkyexxInfo> queryWrapper = new QueryWrapper<WtdkyexxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return wtdkyexxInfoMapper.delete(queryWrapper);
+    }
 }

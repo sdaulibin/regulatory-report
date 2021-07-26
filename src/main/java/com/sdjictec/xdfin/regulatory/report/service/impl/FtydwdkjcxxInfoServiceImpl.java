@@ -8,10 +8,7 @@ import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sdjictec.xdfin.regulatory.report.entity.DgkhxxFullInfo;
-import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkjcxxFullInfo;
-import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkjcxxInfo;
-import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkyexxInfo;
+import com.sdjictec.xdfin.regulatory.report.entity.*;
 import com.sdjictec.xdfin.regulatory.report.listener.FtydwdkjcxxInfoListener;
 import com.sdjictec.xdfin.regulatory.report.mapper.FtydwdkjcxxFullInfoMapper;
 import com.sdjictec.xdfin.regulatory.report.mapper.FtydwdkjcxxInfoMapper;
@@ -98,5 +95,12 @@ public class FtydwdkjcxxInfoServiceImpl extends ServiceImpl<FtydwdkjcxxInfoMappe
         // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
         excelReader.finish();
         return ftydwdkjcxxInfoListener.getFtydwdkjcxxInfoList();
+    }
+
+    @Override
+    public int deleteBysjrq(String sjrq) {
+        QueryWrapper<FtydwdkjcxxInfo> queryWrapper = new QueryWrapper<FtydwdkjcxxInfo>();
+        queryWrapper.eq("sjrq", sjrq);
+        return ftydwdkjcxxInfoMapper.delete(queryWrapper);
     }
 }

@@ -14,4 +14,5 @@ import com.sdjictec.xdfin.regulatory.report.entity.PjtxztxfsxxInfo;
 public interface PjtxztxfsxxInfoService extends IService<PjtxztxfsxxInfo> {
     Boolean checkKhh(String khh, String ywbm,String sjrq);
     void pjtxztxfsxxInfoImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }

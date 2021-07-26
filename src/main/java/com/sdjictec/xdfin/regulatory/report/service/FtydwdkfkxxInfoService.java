@@ -16,4 +16,5 @@ import com.sdjictec.xdfin.regulatory.report.entity.FtydwdkyexxInfo;
 public interface FtydwdkfkxxInfoService extends IService<FtydwdkfkxxInfo> {
     Boolean checkKhh(String khh, String dkjjbh);
     void ftydwdkfkxxInfoImport(String sjrq,String filePath);
+    int deleteBysjrq(String sjrq);
 }
