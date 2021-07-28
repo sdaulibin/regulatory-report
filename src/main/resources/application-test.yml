@@ -14,6 +14,6 @@ spring:
 
 data:
   trans:
-    path: /tmp/xdcs/report/西电财务公司/利率报备
+    path: /tmp/xdcs/report/西电财务公司/利率报备/
   gen:
-    path: /tmp/xdcs/report/西电财务公司/人行报文
+    path: /tmp/xdcs/report/西电财务公司/人行报文/

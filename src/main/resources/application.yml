@@ -2,7 +2,7 @@ spring:
   application:
     name: regulatory-report
   profiles:
-    active: test
+    active: dev
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

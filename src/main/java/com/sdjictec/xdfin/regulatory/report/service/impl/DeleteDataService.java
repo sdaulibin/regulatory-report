@@ -6,6 +6,7 @@ import cn.hutool.core.util.ZipUtil;
 import com.sdjictec.xdfin.regulatory.report.mapper.*;
 import com.sdjictec.xdfin.regulatory.report.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -63,6 +64,9 @@ public class DeleteDataService {
     @Autowired
     private WtdkyexxInfoService wtdkyexxInfoService;
 
+    @Value("${data.gen.path}")
+    public String basePath;
+
     public int deleteData(String sjrq ) {
         int ressult = 0;
         ressult = dgkhxxInfoService.deleteBysjrq(sjrq);
@@ -81,6 +85,12 @@ public class DeleteDataService {
         ressult = wtdkfkxxInfoService.deleteBysjrq(sjrq);
         ressult = wtdkyexxInfoService.deleteBysjrq(sjrq);
         ressult = wtdkjcxxInfoService.deleteBysjrq(sjrq);
+
+        String filePath = basePath + sjrq.replaceAll("-", "") + "/";
+        List<String> fileNames = FileUtil.listFileNames(filePath);
+        for (String fileName:fileNames) {
+            FileUtil.del(filePath+fileName);
+        }
         return ressult;
     }
 }

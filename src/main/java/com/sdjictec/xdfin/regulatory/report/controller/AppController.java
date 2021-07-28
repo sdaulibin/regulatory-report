@@ -40,6 +40,7 @@ public class AppController {
     @RequestMapping(value = "/all/{sjrq}", method = RequestMethod.GET)
     @ResponseBody
     public String allIn(@PathVariable("sjrq") String sjrq) {
+        deleteDataService.deleteData(sjrq);
         transDataService.tranData(sjrq.replaceAll("-",""),sjrq);
         generateDataService.generateData(sjrq.replaceAll("-",""),sjrq);
         return "success";
